@@ -1,0 +1,94 @@
+.SavedAddreas{
+    padding-top: 150px;
+    text-align:center;
+    color:rgb(255, 255, 255);
+}
+
+.Row__list_Save{
+    display: flex;
+    overflow-x:scroll;  
+    margin-top: 40px;
+}
+.saved__move{
+    
+    background-image: url("https://image.tmdb.org/t/p/original/6tPOZmNQ1tbzlhcMmyhYN1a1dEh.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.Row_img_saved{
+    object-fit: contain;
+    max-width:200px;
+    margin-left: 20px;
+    border-radius: 4px;
+    transition: transform 0.5s;
+}
+
+.Row_img_saved:hover{
+    transform: scale(1.15);
+}
+
+.Row_img_saved::-webkit-scrollbar{
+    display: none;
+}
+
+
+ 
+ .icon_but_delet{
+     position: relative; top:-30px ; right: 45px;
+ }
+
+
+
+@media (max-width: 767.98px) { 
+    .SavedAddreas{
+        padding-top: 50px;
+    }
+    .Row__list_Save{
+        display: block;
+    }
+    .Row_img_saved{
+        max-width:300px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+    }
+    .saved__move{
+        background-image: url("https://image.tmdb.org/t/p/original/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg");
+        background-size: 200%;
+        background-position: 50% 0%;
+       
+    }
+    .icon_but_delet{
+        position: relative; top:30px ; right: 45px;
+    }
+   
+ 
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+    .saved__move{
+        /* background-image:#23313f; */
+        background-image: url("https://image.tmdb.org/t/p/original/kOVko9u2CSwpU8zGj14Pzei6Eco.jpg");
+        background-size: 100%;
+        background-position: 50% 0%;
+        /* background-repeat: no-repeat; */
+      /* background-attachment: fixed; */
+    }
+ }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+     .saved__move{
+        /* background-image:#23313f; */
+        background-image: url("https://image.tmdb.org/t/p/original/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg");
+        background-size: 100%;
+        background-position: 50% 0%;
+        /* background-repeat: no-repeat; */
+      /* background-attachment: fixed; */
+    }
+ }

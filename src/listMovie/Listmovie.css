@@ -1,0 +1,138 @@
+.Listmovie{
+    object-fit: contain;
+    max-width: 200px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 10px;
+    z-index: 9999;
+    
+}
+.contGrad{
+    padding-left: 20px;
+    padding-top:30px;
+    /* justify-content: ; */
+    
+  z-index: 9999;
+  
+ 
+
+}
+.tital{
+text-align: center;
+color: #fff;
+}
+.A_parant{
+    filter:  grayscale(25%);
+  -webkit-filter:  grayscale(25%);
+
+}
+.parant{
+    /* background-image:#23313f; */
+    background-image: url("https://image.tmdb.org/t/p/original/keIxh0wPr2Ymj0Btjh4gW7JJ89e.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+ 
+  /* background- */
+}
+.button{
+    display: flex;
+    justify-content: space-around;
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+}
+
+@media (max-width: 575.98px) { 
+    .parant{
+        /* background-image:#23313f; */
+        background-image: url("https://image.tmdb.org/t/p/original/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg");
+        background-size: 300%;
+        background-position: 50% 0%;
+        /* background-repeat: no-repeat; */
+      /* background-attachment: fixed; */
+    }
+    .Iconstyle{
+        font-size: 35px;
+    }
+    .IconstyleSunset{
+        font-size: 20px;
+    }
+    .Description div h2{
+        font-size: 15px;
+    }
+    .copm_weather{
+        width: 300px;
+        height: 550px;    
+    }
+    .Description{
+        width: 101px;
+        height: 90px;
+        font-size: 15px;
+        border-radius: 5px;
+    }
+    .Description h3{
+        font-size: 13px;
+    }
+    .chart{
+        width: 250px;
+        height: 400px;
+    }
+    .nn{
+        font-size: 5px;
+    }
+    .nn div h2{
+        font-size: 8px;
+    }
+ }
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 767.98px) { 
+    .Listmovie{
+        object-fit: contain;
+        max-width: 100px;
+        border-radius: 5px;
+    }
+    .parant{
+        /* background-image:#23313f; */
+        background-image: url("https://image.tmdb.org/t/p/original/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg");
+        background-size: 300%;
+        background-position: 50% 0%;
+        /* background-repeat: no-repeat; */
+      /* background-attachment: fixed; */
+    }
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .Listmovie{
+        object-fit: contain;
+        max-width: 150px;
+        border-radius: 5px;
+    }
+    .parant{
+        /* background-image:#23313f; */
+        background-image: url("https://image.tmdb.org/t/p/original/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg");
+        background-size: 100%;
+        background-position: 50% 0%;
+        /* background-repeat: no-repeat; */
+      /* background-attachment: fixed; */
+    }
+ }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .Listmovie{
+        object-fit: contain;
+        max-width: 200px;
+        border-radius: 5px;
+    }
+     .parant{
+        /* background-image:#23313f; */
+        background-image: url("https://image.tmdb.org/t/p/original/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg");
+        background-size: 100%;
+        background-position: 50% 0%;
+        /* background-repeat: no-repeat; */
+      /* background-attachment: fixed; */
+    }
+ }
+ 
