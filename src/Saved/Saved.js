@@ -1,4 +1,4 @@
-import { IconButton, Typography } from "@material-ui/core"
+import { Button, IconButton, Typography } from "@material-ui/core"
 import axios from '../api/axios'
 import { useDispatch, useSelector } from "react-redux"
 import { infoMovie } from "../api/api"
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Saved() {
     const saved = useSelector(selectSaved)
-    const url_img = "https://image.tmdb.org/t/p/original"
+    const url_img = "https://image.tmdb.org/t/p/w342"
     const [move, setMove] = useState([])
     const [loding, setLoding] = useState(true)
     const dispatch = useDispatch()
@@ -77,20 +77,33 @@ export default function Saved() {
                             {
                                 item ?
                                     <div>
-                                        <Link to={`/list/saved/${item.data.id}`}>
-                                            <img
+                                       
+                                            <div
                                                 className="Row_img_saved"
-                                                src={url_img + item.data.poster_path}
-                                                alt={item.name}
-                                            />
-                                        </Link>
-                                        <IconButton aria-label="delete" className="icon_but_delet" onClick={() => {
+                                                style={{
+                                                    height: "300px",
+                                                    backgroundSize: "cover",
+                                                    backgroundImage: `url(${url_img}${item.data.poster_path})`,
+                                                    backgroundPosition: "center center"
+                                                }}
+
+                                            >
+                                                <IconButton aria-label="delete" className="" onClick={() => {
+                                                    deletSavedInS(item.data.id);
+                                                    dispatch(deleteSaved(item.data.id));
+
+                                                }} >
+                                                    <DeleteIcon color="secondary" fontSize="large" />
+                                                </IconButton>
+                                                <Link to={`/list/saved/${item.data.id}`}><div style={{width:"100%", height:"100%"}}></div></Link>
+
+                                            </div>
+
+                                        {/* <Button className="icon_but_delet2" onClick={() => {
                                             deletSavedInS(item.data.id);
                                             dispatch(deleteSaved(item.data.id));
 
-                                        }} >
-                                            <DeleteIcon color="secondary" fontSize="large" />
-                                        </IconButton>
+                                        }}><DeleteIcon color="secondary" fontSize="large" /></Button> */}
                                     </div>
                                     : null
                             }

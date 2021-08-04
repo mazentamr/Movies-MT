@@ -20,16 +20,16 @@
     flex-wrap: wrap;
 }
 .fact{
-    background: linear-gradient(#c0c3dd,#d0d1d8,#d0d1d8,#9e9e9e,#d0d1d8,#d0d1d8,#d0d1d8);
+    background: rgba(110, 110, 110, 0.658);
     background-size: 200% 200%;
     animation: background_style 3s ease infinite;
-    width:200px;
-    height: 200px;
+    width:170px;
+    height: 250px;
     margin: 20px;
 }   
 
 .pageMovie{
-    background-color: #23313f;
+    background-color: #1b2631;
 }
 @keyframes background_style{
     0% {
@@ -70,9 +70,17 @@ text-align: center;
 }
   .nav{
       display: flex;
+      position: fixed;
+      top:0;
+      width: 100%;
+      display: flex;
       justify-content: space-between;
+      z-index: 1;
+      transition: all 0.5s ease-in;
   }
-
+  .nave_black{
+    background-color: rgba(0, 0, 17, 0.904);
+}
   .Title_Overview{
       margin-top: 200px;
       margin-left: 20px;
@@ -110,6 +118,10 @@ text-align: center;
     .Actor_img{
         max-width: 70px;
     }
+    .fact{
+        width: 100px;
+        height: 110;
+    }
 }
 
 /* // Small devices (landscape phones, 576px and up) */
@@ -119,6 +131,10 @@ text-align: center;
         max-width:130px;
         margin-left: 10px;
     }
+    .fact{
+        width: 130px;
+        height: 150;
+    }
  }
 
 /* // Medium devices (tablets, 768px and up) */
@@ -127,6 +143,10 @@ text-align: center;
         object-fit: contain;
         max-width:150px;
         margin-left: 10px;
+    }
+    .fact{
+        width: 150px;
+        height: 150;
     }
  }
 
@@ -162,4 +182,22 @@ text-align: center;
 
 .name{
     text-align: center;
+}
+
+
+.dilo{
+    object-fit: contain;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.styleDo{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(rgba(17, 17, 17, 0),#000);
+    
 }

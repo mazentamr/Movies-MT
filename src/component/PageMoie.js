@@ -191,9 +191,6 @@ export default function PageMoie(props) {
                             <SnackbarProvider maxSnack={3}>
                                 <Fragment>
                                     <MyApp hundelClikFavorit={hundelClikFavorit} hundelClikSaved={hundelClikSaved} colorFavorit={colorFavorit} ColorSaved={ColorSaved}/>
-
-                                    {/* <BottomNavigationAction label="Favorites" onClick={hundelClikFavorit} style={colorFavorit} icon={<FavoriteIcon />} /> */}
-                                    {/* <BottomNavigationAction label="Bookmarks" onClick={hundelClikSaved} style={ColorSaved} icon={<BookmarksIcon />} /> */}
                                 </Fragment>
                             </SnackbarProvider>
                         </div>
@@ -213,7 +210,7 @@ export default function PageMoie(props) {
                             <Grid item xs={3} sm={3} md={1} key={i} >
                                 <img
                                     className="Actor_img"
-                                    src={url_img + item.profile_path}
+                                    src={`https://image.tmdb.org/t/p/w92${item.profile_path}`}
                                     alt={item.name}
                                 />
                                 <Typography variant="h6" className={classes.text} >{item.name}</Typography>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 
-const url_img = "https://image.tmdb.org/t/p/original"
+const url_img = "https://image.tmdb.org/t/p/w185"
 export default function MovieItim({ name, id, urlImg }) {
     return (
         <div>

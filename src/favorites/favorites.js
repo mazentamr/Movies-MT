@@ -1,4 +1,4 @@
-import { IconButton, Typography } from "@material-ui/core";
+import { Button, IconButton, Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux"
 import { deleteFavorit, selectFavorit } from "../features/FavoritR/favoritSlice"
 import './favorites.css'
@@ -13,6 +13,8 @@ import { Link } from "react-router-dom";
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
+import { Appnav } from "../component/Slider";
+
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -29,7 +31,7 @@ export default function Favorites(props) {
   const [item, setItem] = useState([]);
   const userId = useSelector(selectUserId)
   const dispatch = useDispatch()
-  const url_img = "https://image.tmdb.org/t/p/original"
+  const url_img = "https://image.tmdb.org/t/p/w342"
 
   useEffect(() => {
     fetchData();
@@ -63,6 +65,13 @@ export default function Favorites(props) {
       favorit: item.favorit.filter(ite => ite.id != id)
     });
   }
+  const [open, setOpen] = useState();
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
 
 
@@ -77,23 +86,31 @@ export default function Favorites(props) {
             <div key={index}>
               {
                 item ?
-                  <div className="Row_img_favorit_p">
-                    <Link to={`/list/favorites/${item.data.id}`}>
+                  <div className="Row_img_favorit">
+                   
 
-                      <img
-                        className="Row_img_favorit"
-                        src={url_img + item.data.poster_path}
-                        alt={item.name}
-                      />
+                      <div
+                        className=""
+                        style={{
+                          height: "300px",
+                          backgroundSize: "cover",
+                          backgroundImage: `url(${url_img}${item.data.poster_path})`,
+                          backgroundPosition: "center center"
+                        }}
+                      >
+                        <IconButton aria-label="delete" edge={false} onClick={() => {
+                          deletFavoritInS(item.data.id);
+                          dispatch(deleteFavorit(item.data.id));
 
-                    </Link>
-                    <IconButton aria-label="delete" edge={false} className="icon_but_delet" onClick={() => {
-                      deletFavoritInS(item.data.id);
-                      dispatch(deleteFavorit(item.data.id));
+                        }} >
+                          <DeleteIcon color="secondary" fontSize="large" />
+                        </IconButton>
+                        <Link to={`/list/favorites/${item.data.id}`}> <div style={{width:"100%", height:"100%"}}></div>   </Link>
+                      </div>
 
-                    }} >
-                      <DeleteIcon color="secondary" fontSize="large" />
-                    </IconButton>
+
+                
+
                   </div>
                   : null
               }
@@ -109,7 +126,7 @@ export default function Favorites(props) {
 
 
 
-function SimpleBackdrop({open}) {
+function SimpleBackdrop({ open }) {
   const classes = useStyles();
   return (
     <div>

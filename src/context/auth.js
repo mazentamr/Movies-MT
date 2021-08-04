@@ -32,13 +32,11 @@ export const AuthProvider = ({ children }) => {
     try {
       const unsubscribe = auth.onAuthStateChanged((user) => {
         setUser(user);
-        if(user){
           dispatch(setUserLogin({
             email: user.email,
             userId: user.uid,
           }))
-        }
-       
+
         if (user) {
           const unsubscribe = db.collection('user_move').doc(user.uid)
           unsubscribe.onSnapshot((snap) => {

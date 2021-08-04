@@ -27,7 +27,6 @@ const firebaseApp=firebase.initializeApp(
   export const authGoogle = new firebase.auth.GoogleAuthProvider()
 
 
-
  
 
 

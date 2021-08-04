@@ -162,8 +162,7 @@ export default function Slider__() {
 
 
   return (
-    <div >
-
+    <div>
       <div>
         <Dialog
           open={open_D}
@@ -261,10 +260,56 @@ export default function Slider__() {
               backgroundPosition: "center center"
             }}
           >
-            <div className="nav">
-              <div style={{ display: 'flex' }}>
+            <Appnav opn={handleDrawerOpen}/>
+            <div className="Title_Overview" >
+              <Typography variant="h6" style={{ color: "#fff" }}>
+                {item?.original_title || item?.title || item?.original_name}
+              </Typography>
+              <Typography variant="caption" style={{ color: "#fff", fontSize: "13px" }}>
+                {subString_str(item.overview, 150)}
+              </Typography>
+            </div>
 
-                <IconButton onClick={handleDrawerOpen}>
+            <div className="center">
+
+            </div>
+          </div>
+        ))}
+      </Slider>
+    </div>
+  )
+}
+
+
+
+function PaperComponent(props) {
+  return (
+    <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
+      <Paper {...props} />
+    </Draggable>
+  );
+}
+
+export function Appnav({opn}){
+  const { user } = useContext(AuthContext);
+  const [show, handlShow] = useState(false)
+  useEffect(() => {
+      window.addEventListener("scroll", () => {
+          if (window.scrollY > 100) {
+              handlShow(true);
+          } else handlShow(false);
+      })
+
+      // return () => {
+      //     window.removeEventListener("scroll");
+      // }
+  }, [])
+
+  return(
+<div className={`nav ${show && "nave_black" }`}>
+              <div style={{ display: 'flex'}}>
+
+                <IconButton onClick={opn}>
                   <MenuIcon style={{ color: "#fff" }} />
                 </IconButton>
 
@@ -293,31 +338,5 @@ export default function Slider__() {
 
 
             </div>
-            <div className="Title_Overview" >
-              <Typography variant="h6" style={{ color: "#fff" }}>
-                {item?.original_title || item?.title || item?.original_name}
-              </Typography>
-              <Typography variant="caption" style={{ color: "#fff", fontSize: "13px" }}>
-                {subString_str(item.overview, 150)}
-              </Typography>
-            </div>
-
-            <div className="center">
-
-            </div>
-          </div>
-        ))}
-      </Slider>
-    </div>
   )
-}
-
-
-
-function PaperComponent(props) {
-  return (
-    <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
-      <Paper {...props} />
-    </Draggable>
-  );
 }

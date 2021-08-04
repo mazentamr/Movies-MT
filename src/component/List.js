@@ -98,10 +98,10 @@ export default function List_pr() {
                             userPhoto ? <img src={userPhoto} alt="" style={{ height: "150px", width: "150px", borderRadius: "50%" }} /> : <PermIdentityIcon style={{ fontSize: "150px", color: "#999" }} />
                         }
 
-                        <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
-                        <label htmlFor="icon-button-file">
+                        <input className={classes.input} id="icon-button-file" type="file" onChange={uploadImage} ref={inputRef} />
+                        <label htmlFor="icon-button-file"  >
 
-                            <IconButton className={classes.inputPac} onChange={uploadImage} ref={inputRef} color="primary" aria-label="upload picture" component="span">
+                            <IconButton className={classes.inputPac} multiple color="primary" aria-label="upload picture" component="span">
                                 <PhotoCamera />
                             </IconButton>
                         </label>
@@ -109,9 +109,7 @@ export default function List_pr() {
                     <div>
                         <Typography variant="h6" align="center" > {userEmail} </Typography>
                     </div>
-                    <input type="file" onChange={uploadImage} ref={inputRef} />
                     <CircularProgress variant="determinate" value={progress} />
-                    {/* <progress value={progress} max={100}></progress> */}
                 </>
             }
         </div>

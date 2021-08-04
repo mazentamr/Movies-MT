@@ -6,7 +6,7 @@ import './search.css'
 import MovieItim from './MovieItim'
 import { searchMove } from "../api/api"
 import axios from '../api/axios';
-
+import {AiOutlineSearch} from "react-icons/ai"
 export default function ComponerntSearch() {
     const [name_move, setName_move] = useState("")
     const [movies, setMovies] = useState([])
@@ -33,24 +33,28 @@ export default function ComponerntSearch() {
     return (
         <div className="pirant">
             <div className="search_style">
-
-                <TextField id="filled-basic" label="Search" variant="filled" value={name_move} onChange={handlChange}
-                    required
-                    name="text"
-                />
-             
-             
-                <Button variant="contained" onClick={handlClike} >Search</Button>
+                <div>
+                    <TextField id="filled-basic" label="Search" variant="filled" value={name_move} onChange={handlChange}
+                        required
+                        name="text"
+                    />
+                </div>
+                <div>
+                    <Button disableElevation variant="contained" onClick={handlClike} ><AiOutlineSearch/>Search</Button>
+                </div>
             </div>
             <hr></hr>
             {
-                loding===false && lodingFake===true ?
-                <FakeSearch lodingFake={true} />
-                : null
+                loding === false && lodingFake === true ?
+                    <FakeSearch lodingFake={true} />
+                    : null
             }
+            <div>
             {
-                loding ? movies.map((item,i) => <MovieItim name={item.title} id={item.id} urlImg={item.poster_path} key={i} />):null
+                loding ? movies.map((item, i) => <MovieItim name={item.title} id={item.id} urlImg={item.poster_path} key={i} />) : null
             }
+            </div>
+            
         </div>
     )
 }

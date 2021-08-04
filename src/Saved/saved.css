@@ -6,19 +6,28 @@
 
 .Row__list_Save{
     display: flex;
-    overflow-x:scroll;  
-    margin-top: 40px;
+    overflow-y: hidden;
+    overflow-x: scroll;  
+    margin-top: 60px;
+    /* padding-bottom: 100px; */
 }
 .saved__move{
+    height:100%;
+    position: absolute;
     
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+
     background-image: url("https://image.tmdb.org/t/p/original/6tPOZmNQ1tbzlhcMmyhYN1a1dEh.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
   background-attachment: fixed;
+  
 }
 .Row_img_saved{
     object-fit: contain;
-    max-width:200px;
+    width:200px;
     margin-left: 20px;
     border-radius: 4px;
     transition: transform 0.5s;
@@ -28,16 +37,9 @@
     transform: scale(1.15);
 }
 
-.Row_img_saved::-webkit-scrollbar{
+.Row__list_Save::-webkit-scrollbar{
     display: none;
 }
-
-
- 
- .icon_but_delet{
-     position: relative; top:-30px ; right: 45px;
- }
-
 
 
 @media (max-width: 767.98px) { 

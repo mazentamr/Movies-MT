@@ -1,18 +1,20 @@
-/* .pirant{
-    background-image: url("https://image.tmdb.org/t/p/original/rmEPtz3Ufzol2VWUAZYzOFaBio3.jpg");
+.pirant{
+    background-image: url("https://image.tmdb.org/t/p/original/wPjtacig0kIkVcTQmXoNt6jbMwo.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-} */
-
-
-
+    position: absolute;left: 0;
+    height: 100%;
+    width: 100%;
+    filter:  grayscale(25%);
+    -webkit-filter:  grayscale(25%);
+}
 
 
 .fake_style{
     width: 90%;
     height: 160px;
-    background: linear-gradient(#c0c3dd,#d0d1d8,#d0d1d8,#aaa8a8,#d0d1d8,#d0d1d8,#d0d1d8);
+    background:rgba(110, 110, 110, 0.658) ;
     background-size: 200% 200%;
     animation: background_style 3s ease infinite;
     margin: 10px;
@@ -42,7 +44,12 @@
   }
 .search_style{
     margin-top:50px ;
-    display: flex;
+    /* display: flex;
+    justify-content: space-around; */
+}
+.search_style div{
+    margin: 20px;
+     display: flex;
     justify-content: space-around;
 }
 
@@ -59,7 +66,7 @@ border-radius: 3px;
     width: 90%;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(201, 201, 201);
+    background-color: rgba(61, 61, 61, 0.61);
     margin: 10px;
     border-radius: 7px;
 }

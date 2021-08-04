@@ -21,7 +21,7 @@ export default function Top_rated(props) {
     const [movie, setMovie] = useState([])
     const [page, setPage] = useState(1);
     const [loding ,setLoding]=useState(true)
-    const url_img = "https://image.tmdb.org/t/p/original"
+    const url_img = "https://image.tmdb.org/t/p/w342"
 
     useEffect(() => {
         async function fetchData() {

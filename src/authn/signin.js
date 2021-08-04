@@ -14,7 +14,7 @@ import Container from '@material-ui/core/Container';
 import { useFirestore } from '../firebase/useFirestore'
 import { auth, authGoogle } from '../firebase/firebase'
 import { useHistory } from 'react-router';
-
+import { FcGoogle } from "react-icons/fc";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -85,6 +85,7 @@ export default function SignIn() {
       userId: user.uid,
       favorit: [{ id: "" }],
       saved: [{ id: "" }],
+      photo:"",
     }
     await addItem(newObject, user.uid);
   }
@@ -110,21 +111,6 @@ const hundlSignOutGoogle =()=>{
           Sign in
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
-
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="text"
-            label="User Name"
-            name="userName"
-            // autoComplete="email"
-            // autoFocus
-            value={input.userName}
-            onChange={handleChange}
-          />
-
           <TextField
             variant="outlined"
             margin="normal"
@@ -195,7 +181,7 @@ const hundlSignOutGoogle =()=>{
         </form>
 
         <Button variant="contained" className={classes.signinGoogle} color="primary" onClick={hundlSigninGoogle} disableElevation>
-          Sign In With Google
+          <FcGoogle/> Sign In With Google
         </Button>
 
       </div>
