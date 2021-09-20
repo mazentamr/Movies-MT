@@ -1,19 +1,19 @@
 
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import { Request_move } from "./api/api"
-import RowMove from './component/RowMove'
+import RowMove from './component/row-move/RowMove'
 import Slider__ from './component/Slider'
 import ComponentLink from './component/componentLink'
 import Top_rated from './listMovie/Top_rated'
-import LogIn from './authn/login'
-import SignIn from './authn/signin'
-import ComponerntSearch from './search/ComponerntSearch'
+import LogIn from './pages/login/login'
+import SignIn from './pages/signin/signin'
+import ComponerntSearch from './pages/search/ComponerntSearch'
 import PageMoie from './component/PageMoie'
 import { PrivatRoute } from './PrivateRouth/PrivateRouth'
 import { AuthProvider } from './context/auth'
 import Profile from './component/Profile'
-import Favorites from './favorites/favorites';
-import Saved from './Saved/Saved'
+import Favorites from './pages/favorites/favorites';
+import Saved from './pages/Saved/Saved'
 function Home() {
 
   return (

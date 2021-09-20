@@ -9,7 +9,6 @@
     overflow-y: hidden;
     overflow-x: scroll;  
     margin-top: 60px;
-    /* padding-bottom: 100px; */
 }
 .saved__move{
     height:100%;
@@ -48,6 +47,8 @@
     }
     .Row__list_Save{
         display: block;
+        overflow: hidden;
+       
     }
     .Row_img_saved{
         max-width:300px;
@@ -60,7 +61,7 @@
         background-image: url("https://image.tmdb.org/t/p/original/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg");
         background-size: 200%;
         background-position: 50% 0%;
-       
+        overflow-y: scroll;
     }
     .icon_but_delet{
         position: relative; top:30px ; right: 45px;

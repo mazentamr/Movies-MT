@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import '../css.css'
-import RowMove from '../component/RowMove'
+import RowMove from './row-move/RowMove'
 import YouTube from 'react-youtube';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';

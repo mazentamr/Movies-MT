@@ -1,13 +1,10 @@
 
-.Row__list{
+.factDialog{
+    width:400px;
+    height: 200px;    
     display: flex;
-    overflow-x:scroll;  
-}
-.Row__img{
-    object-fit: contain;
-    max-width:200px;
-    margin-left: 20px;
-    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
 }
 .Row__list::-webkit-scrollbar{
     display: none;
@@ -20,12 +17,15 @@
     flex-wrap: wrap;
 }
 .fact{
-    background: rgba(110, 110, 110, 0.658);
+    background: #1b1e24;
     background-size: 200% 200%;
     animation: background_style 3s ease infinite;
     width:170px;
     height: 250px;
     margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }   
 
 .pageMovie{
@@ -119,7 +119,7 @@ text-align: center;
         max-width: 70px;
     }
     .fact{
-        width: 100px;
+        width: 130px;
         height: 110;
     }
 }
@@ -132,8 +132,8 @@ text-align: center;
         margin-left: 10px;
     }
     .fact{
-        width: 130px;
-        height: 150;
+        width: 100px;
+        height: 90;
     }
  }
 
@@ -193,11 +193,3 @@ text-align: center;
     align-items: flex-end;
 }
 
-.styleDo{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 70px;
-    background: linear-gradient(rgba(17, 17, 17, 0),#000);
-    
-}

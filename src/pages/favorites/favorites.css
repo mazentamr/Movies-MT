@@ -12,11 +12,12 @@
 .favorit__move{
     width: 100%;
     position: absolute;left: 0;
+    overflow: hidden;
     height: 100%;
     background-image: url("https://image.tmdb.org/t/p/original/6tPOZmNQ1tbzlhcMmyhYN1a1dEh.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
-  /* background-attachment: fixed; */
+  background-attachment: fixed;
 }
 
 .Row_img_favorit{
@@ -46,13 +47,14 @@
     }
     .Row_img_favorit{
         max-width:300px;
+        display: block;
         margin-left: auto;
         margin-right: auto;
         margin-top: 20px;
         
     }
     .favorit__move{
-     
+        overflow-y: scroll;
         background-image: url("https://image.tmdb.org/t/p/original/kEl2t3OhXc3Zb9FBh1AuYzRTgZp.jpg");
         background-size: 200%;
         background-position: 50% 0%;

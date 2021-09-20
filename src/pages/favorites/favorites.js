@@ -1,19 +1,19 @@
 import { Button, IconButton, Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux"
-import { deleteFavorit, selectFavorit } from "../features/FavoritR/favoritSlice"
+import { deleteFavorit, selectFavorit } from "../../features/FavoritR/favoritSlice"
 import './favorites.css'
 import StarsIcon from '@material-ui/icons/Stars';
 import { useEffect, useState } from "react";
-import { selectUserId } from "../features/user/userSlice";
-import { db } from "../firebase/firebase"
-import axios from '../api/axios'
-import { infoMovie } from "../api/api";
+import { selectUserId } from "../../features/user/userSlice";
+import { db } from "../../firebase/firebase"
+import axios from '../../api/axios'
+import { infoMovie } from "../../api/api";
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from "react-router-dom";
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
-import { Appnav } from "../component/Slider";
+import { Appnav } from "../../component/Slider";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -99,7 +99,7 @@ export default function Favorites(props) {
                         }}
                       >
                         <IconButton aria-label="delete" edge={false} onClick={() => {
-                          deletFavoritInS(item.data.id);
+                          deletFavoritInS(item.data.id);  
                           dispatch(deleteFavorit(item.data.id));
 
                         }} >
@@ -107,10 +107,7 @@ export default function Favorites(props) {
                         </IconButton>
                         <Link to={`/list/favorites/${item.data.id}`}> <div style={{width:"100%", height:"100%"}}></div>   </Link>
                       </div>
-
-
-                
-
+                      
                   </div>
                   : null
               }

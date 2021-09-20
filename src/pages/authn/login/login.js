@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,10 +11,14 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { useFirestore } from '../firebase/useFirestore'
-import { auth, authGoogle } from '../firebase/firebase'
-import { useHistory } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
+
+
+import { auth ,authGoogle} from '../../firebase/firebase'
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import './authcss.css'
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -39,67 +43,39 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
-
-
-const initialstate = { email: '', password: '', confirmPassword: '', userName: '' }
-
-
+const initialState = { email: '', password: '' };
 export default function SignIn() {
   const classes = useStyles();
-  const history = useHistory()
-  const [input, setInput] = useState('');
+  const history = useHistory();
+  const [input, setInput] = useState(initialState);
   const [error, setError] = useState('');
-  const { addItem } = useFirestore();
 
   const handleChange = ({ target }) => {
     setInput({
       ...input,
-      [target.name]: target.value
+      [target.name]: target.value,
     });
     setError('');
-  }
+  };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
-    if (input.password !== input.confirmPassword) {
-      return setError("Password don't match");
-    }
     try {
-      await auth.createUserWithEmailAndPassword(input.email, input.password,).then((res) => {
-        addItemInF(res.user);
-      })
-      setInput(initialstate);
+      await auth.signInWithEmailAndPassword(input.email, input.password)
+      setInput(initialState);
       history.push('/');
     } catch (err) {
       setError(err.message);
     }
-
+  };
+  const hundlSigninGoogle =()=>{
+    auth.signInWithPopup(authGoogle).then((res)=>{
+      history.push('/');
+    })
   }
-
-  async function addItemInF(user) {
-    const newObject = {
-      email: user.email,
-      userId: user.uid,
-      favorit: [{ id: "" }],
-      saved: [{ id: "" }],
-      photo:"",
-    }
-    await addItem(newObject, user.uid);
-  }
-
-const hundlSigninGoogle =()=>{
-  auth.signInWithPopup(authGoogle).then((res)=>{
-    addItemInF(res.user)
-  })
-  history.push('/');
-}
-
-const hundlSignOutGoogle =()=>{
   
-}
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -108,7 +84,7 @@ const hundlSignOutGoogle =()=>{
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Log in
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
@@ -134,24 +110,9 @@ const hundlSignOutGoogle =()=>{
             type="password"
             id="password"
             autoComplete="current-password"
-            onChange={handleChange}
             value={input.password}
-          />
-
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="confirmPassword"
-            label="Confirm Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={input.confirmPassword}
             onChange={handleChange}
           />
-
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
@@ -163,8 +124,9 @@ const hundlSignOutGoogle =()=>{
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Log in
           </Button>
+
           <p className="form__error">{error}</p>
           <Grid container>
             <Grid item xs>
@@ -173,13 +135,12 @@ const hundlSignOutGoogle =()=>{
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/login" variant="body2">
-                {"Have an account? Log In"}
+              <Link href="/signin" variant="body2">
+                {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>
         </form>
-
         <Button variant="contained" className={classes.signinGoogle} color="primary" onClick={hundlSigninGoogle} disableElevation>
           <FcGoogle/> Sign In With Google
         </Button>

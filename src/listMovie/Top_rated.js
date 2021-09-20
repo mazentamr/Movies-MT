@@ -59,6 +59,7 @@ export default function Top_rated(props) {
                                             className="Listmovie"
                                             src={`${url_img}${item.poster_path}`}
                                             alt={item.tital}
+                                            loading="lazy"
                                         />
                                     </Link>
                                 </div>

@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-//import userSlice from '../features/user/userSlice'
 import userReducer from "../features/user/userSlice"
 import profileReducer from "../features/Profile/profileSlice"
 import favoritReducer from "../features/FavoritR/favoritSlice"

@@ -38,6 +38,7 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import StarsIcon from '@material-ui/icons/Stars';
 import { useSelector } from 'react-redux';
 import { selectUserPhoto } from '../features/Profile/profileSlice';
+import { Backdrop, CircularProgress } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -96,6 +97,10 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 }));
 
 const Prof = () => {
@@ -123,12 +128,18 @@ export default function Slider__() {
   const [open_D, setOpen_D] = useState(false);
   const url_img = "https://image.tmdb.org/t/p/original"
   const [content, setContent] = useState([])
+  const [loding, setLoding] = useState(true)
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(Request_move.Trending_movie);
-      setContent(response.data.results);
-      return response
+      try {
+        const response = await axios.get(Request_move.Trending_movie);
+        setContent(response.data.results);
+        setLoding(false);
+        return response
+      } catch (err) {
+        console.log(console.error(err))
+      }
     }
     fetchData()
   }, [])
@@ -160,7 +171,7 @@ export default function Slider__() {
   };
 
 
-
+  if (loding) return <SimpleBackdrop open={loding} />;
   return (
     <div>
       <div>
@@ -260,7 +271,7 @@ export default function Slider__() {
               backgroundPosition: "center center"
             }}
           >
-            <Appnav opn={handleDrawerOpen}/>
+            <Appnav opn={handleDrawerOpen} />
             <div className="Title_Overview" >
               <Typography variant="h6" style={{ color: "#fff" }}>
                 {item?.original_title || item?.title || item?.original_name}
@@ -290,53 +301,66 @@ function PaperComponent(props) {
   );
 }
 
-export function Appnav({opn}){
+export function Appnav({ opn }) {
   const { user } = useContext(AuthContext);
   const [show, handlShow] = useState(false)
   useEffect(() => {
-      window.addEventListener("scroll", () => {
-          if (window.scrollY > 100) {
-              handlShow(true);
-          } else handlShow(false);
-      })
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        handlShow(true);
+      } else handlShow(false);
+    })
 
-      // return () => {
-      //     window.removeEventListener("scroll");
-      // }
+    // return () => {
+    //     window.removeEventListener("scroll");
+    // }
   }, [])
 
-  return(
-<div className={`nav ${show && "nave_black" }`}>
-              <div style={{ display: 'flex'}}>
+  return (
+    <div className={`nav ${show && "nave_black"}`}>
+      <div style={{ display: 'flex' }}>
 
-                <IconButton onClick={opn}>
-                  <MenuIcon style={{ color: "#fff" }} />
-                </IconButton>
-
-
-
-                <Link to={{
-                  pathname: `/search`
-
-                }}>
-                  <IconButton>
-                    <SearchIcon style={{ color: "#fff" }} />
-                  </IconButton>
-                </Link>
-              </div>
-
-              {
-                !user ? <div className="logIn">
-                  <Link to="/login" style={{ textDecoration: 'none' }}>
-                    <Button style={{ color: "#f3e5f5" }}>Log in</Button>
-                  </Link >
-                  <Link to="/signin" style={{ textDecoration: 'none' }}>
-                    <Button style={{ color: "#f3e5f5" }}>Sign in</Button>
-                  </Link>
-                </div> : <Prof />
-              }
+        <IconButton onClick={opn}>
+          <MenuIcon style={{ color: "#fff" }} />
+        </IconButton>
 
 
-            </div>
+
+        <Link to={{
+          pathname: `/search`
+
+        }}>
+          <IconButton>
+            <SearchIcon style={{ color: "#fff" }} />
+          </IconButton>
+        </Link>
+      </div>
+
+      {
+        !user ? <div className="logIn">
+          <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Button style={{ color: "#f3e5f5" }}>Log in</Button>
+          </Link >
+          <Link to="/signin" style={{ textDecoration: 'none' }}>
+            <Button style={{ color: "#f3e5f5" }}>Sign in</Button>
+          </Link>
+        </div> : <Prof />
+      }
+
+
+    </div>
   )
+}
+
+
+
+function SimpleBackdrop({ open }) {
+  const classes = useStyles();
+  return (
+    <div>
+      <Backdrop className={classes.backdrop} open={open} >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+    </div>
+  );
 }

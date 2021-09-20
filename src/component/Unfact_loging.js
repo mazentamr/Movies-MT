@@ -24,22 +24,22 @@ export default function Unfact_loging({ tital }) {
         <div className="Unfact">
             <div style={{ display:"flex",
         justifyItems: "center",
-        alignItems: "center",}} className={`fact`}> <CircularProgress  disableShrink /></div>
+        alignItems: "center",}} className={`fact`}><div> <CircularProgress  disableShrink /></div></div>
             <div style={{ display:"flex",
         justifyItems: "center",
-        alignItems: "center",}} className={`fact`}> <CircularProgress  disableShrink /></div>
+        alignItems: "center",}} className={`fact`}> <div> <CircularProgress  disableShrink /></div></div>
             <div style={{ display:"flex",
         justifyItems: "center",
-        alignItems: "center",}} className={`fact`}> <CircularProgress  disableShrink /></div>
+        alignItems: "center",}} className={`fact`}> <div> <CircularProgress  disableShrink /></div></div>
             <div style={{ display:"flex",
         justifyItems: "center",
-        alignItems: "center",}} className={`fact`}> <CircularProgress  disableShrink /></div>
+        alignItems: "center",}} className={`fact`}> <div> <CircularProgress  disableShrink /></div></div>
             <div style={{ display:"flex",
         justifyItems: "center",
-        alignItems: "center",}} className={`fact`}> <CircularProgress  disableShrink /></div>
+        alignItems: "center",}} className={`fact`}> <div> <CircularProgress  disableShrink /></div></div>
             <div style={{ display:"flex",
         justifyItems: "center",
-        alignItems: "center",}} className={`fact`}> <CircularProgress  disableShrink /></div>
+        alignItems: "center",}} className={`fact`}> <div> <CircularProgress  disableShrink /></div></div>
         </div>marginLeft:"30px"
     </div>
     )

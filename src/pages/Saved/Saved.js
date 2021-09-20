@@ -1,14 +1,14 @@
 import { Button, IconButton, Typography } from "@material-ui/core"
-import axios from '../api/axios'
+import axios from '../../api/axios'
 import { useDispatch, useSelector } from "react-redux"
-import { infoMovie } from "../api/api"
-import { deleteSaved, selectSaved } from "../features/Saved/savedSlice"
+import { infoMovie } from "../../api/api"
+import { deleteSaved, selectSaved } from "../../features/Saved/savedSlice"
 import './saved.css'
 import { useEffect, useState } from "react"
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { selectUserId } from "../features/user/userSlice"
-import { db } from "../firebase/firebase"
+import { selectUserId } from "../../features/user/userSlice"
+import { db } from "../../firebase/firebase"
 import { Link } from "react-router-dom";
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';

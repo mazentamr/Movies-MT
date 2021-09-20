@@ -8,6 +8,9 @@
     width: 100%;
     filter:  grayscale(25%);
     -webkit-filter:  grayscale(25%);
+    z-index: 1;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 
@@ -52,7 +55,13 @@
      display: flex;
     justify-content: space-around;
 }
-
+.textSearch{
+    background-color: rgba(139, 139, 139, 0.596);
+    width:300px;
+    margin:"auto";
+    background: rgba(139, 139, 139, 0.596);
+    border-radius:5px;
+}
 .img_search{
 object-fit: contain;
 max-height: 160px;
@@ -80,6 +89,9 @@ border-radius: 3px;
 @media (max-width: 575.98px) { 
     .img_search{
         max-width: 50px;
+    }
+    .pirant{
+        background-image: url("https://image.tmdb.org/t/p/original/cODqUZ3XzDz4lkhxw0OnaUSfz8R.jpg");
     }
 }
 

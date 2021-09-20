@@ -1,0 +1,8 @@
+.contanaer_Login{
+    display: flex;
+    justify-items: self-end;
+
+}
+.form__error{
+    color: #fa3939;
+}

@@ -1,0 +1,22 @@
+
+.Row__list{
+    display: flex;
+    overflow-x:scroll;  
+}
+
+
+.Row__img{
+    object-fit: contain;
+    max-width:200px;
+    margin-left: 20px;
+    border-radius: 4px;
+}
+
+.styleDo{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(rgba(17, 17, 17, 0),#000);
+    
+}

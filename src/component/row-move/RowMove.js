@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
-import axios from '../api/axios';
-import '../css.css'
-import Unfact_loging from './Unfact_loging'
+import axios from '../../api/axios';
+import './RowMove.css'
+import Unfact_loging from '../Unfact_loging'
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -12,9 +11,10 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
-import { infoMovie } from "../api/api";
+import { infoMovie } from "../../api/api";
 import StarIcon from '@material-ui/icons/Star';
 import { makeStyles } from '@material-ui/core/styles';
+import { CircularProgress } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     starY: {
@@ -23,20 +23,20 @@ const useStyles = makeStyles((theme) => ({
     starG: {
         color: "rgb(53, 53, 53))"
     },
-    pStar:{
-        display:"flex",
+    pStar: {
+        display: "flex",
         // alignItems:"flex-end",
-        justifyContent:"flex-end",
-       marginTop:"20px",
+        justifyContent: "flex-end",
+        marginTop: "20px",
     },
-    buttonClose:{
-        color:"#ddd",
-        background:"#000",
-        height:"30px",
-        border:"none"
+    buttonClose: {
+        color: "#ddd",
+        background: "#000",
+        height: "30px",
+        border: "none"
     },
-    textname:{
-        marginTop:"20px",
+    textname: {
+        marginTop: "20px",
     }
 
 }));
@@ -93,9 +93,10 @@ export default function RowMove({ tital, url_movie }) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get(url_movie);
+                const response = await axios.get(url_movie)
                 setMovies(response.data.results);
-                setLoding(false);
+                response.data.results.then(setLoding(false))
+
                 return response
             } catch (err) {
                 console.log(console.error(err))
@@ -131,37 +132,37 @@ export default function RowMove({ tital, url_movie }) {
             <StarIcon className={classes.starG} />
             <StarIcon className={classes.starG} /></div>
         else if (num <= 4 && num > 2) return <div className={classes.pStar}>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starG}/>
-            <StarIcon className={classes.starG}/>
-            <StarIcon className={classes.starG}/>
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starG} />
+            <StarIcon className={classes.starG} />
+            <StarIcon className={classes.starG} />
             <StarIcon className={classes.starG} /> </div>
         else if (num <= 6 && num > 4) return <div className={classes.pStar}>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starG}/>
-            <StarIcon className={classes.starG}/>
-            <StarIcon className={classes.starG}/></div>
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starG} />
+            <StarIcon className={classes.starG} />
+            <StarIcon className={classes.starG} /></div>
         else if (num <= 8 && num > 6) return <div className={classes.pStar}>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starG}/>
-            <StarIcon className={classes.starG}/></div>
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starG} />
+            <StarIcon className={classes.starG} /></div>
         else if (num <= 10 && num > 8) return <div className={classes.pStar}>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starG}/></div>
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starG} /></div>
         else if (num === 10) return <div className={classes.pStar}>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/>
-            <StarIcon className={classes.starY}/></div>
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} />
+            <StarIcon className={classes.starY} /></div>
     }
-    
+
     if (loding) {
         return <Unfact_loging tital={tital} />
     }
@@ -179,7 +180,9 @@ export default function RowMove({ tital, url_movie }) {
                                 className="Row__img"
                                 src={`https://image.tmdb.org/t/p/w342${item.poster_path}`}
                                 alt={item.tital}
+                                loading="lazy"
                             />
+
 
                         </div>
                     )
@@ -188,29 +191,39 @@ export default function RowMove({ tital, url_movie }) {
             </div>
             <div >
                 <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                    <div className="dilo" style={{
-                        height: "300px",
-                        backgroundSize: "cover",
-                        backgroundImage: `url(${url_img}${infoM.backdrop_path})`,
-                        backgroundPosition: "center center"
-                    }}>
-                        <div className="styleDo">
-                        <Typography variant="h6" className={classes.textname} >{infoM?.original_title || infoM?.title || infoM?.original_name}</Typography>
-                            {renderStar(infoM.vote_average)}
-                          
-                        </div>
-                    </div>
+                    {
+                        infoM.backdrop_path ?
+                            <div className="dilo" style={{
+                                height: "300px",
+                                backgroundSize: "cover",
+                                backgroundImage: `url(${url_img}${infoM.backdrop_path})`,
+                                backgroundPosition: "center center"
+                            }}>
+                                <div className="styleDo">
+                                    <Typography variant="h6" className={classes.textname} >{infoM?.original_title || infoM?.title || infoM?.original_name}</Typography>
+                                    {renderStar(infoM.vote_average)}
+                                </div>
+                            </div> :
+                            <FactDialog />
+                    }
 
-                    <DialogActions style={{ background: "#000",height:"300px" }} >
-                    <Typography variant="caption" align="center" style={{ color: "#fff", margin: "10px" }} >{infoM.overview}</Typography>
-                    
+                    <DialogActions style={{ background: "#000", height: "300px" }} >
+                        <Typography variant="caption" align="center" style={{ color: "#fff", margin: "10px" }} >{infoM.overview}</Typography>
+
                     </DialogActions>
-                    <button  onClick={handleClose} className={classes.buttonClose} >
-                           Close
-                        </button>
+                    <button onClick={handleClose} className={classes.buttonClose} >
+                        Close
+                    </button>
                 </Dialog>
             </div>
         </div>
     )
 }
 
+const FactDialog = () => {
+    return (
+        <div className="factDialog">
+            <CircularProgress disableShrink />
+        </div>
+    )
+}

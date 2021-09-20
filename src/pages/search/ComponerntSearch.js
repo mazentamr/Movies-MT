@@ -4,9 +4,9 @@ import FakeSearch from './FakeSearch'
 import React, { useState } from 'react';
 import './search.css'
 import MovieItim from './MovieItim'
-import { searchMove } from "../api/api"
-import axios from '../api/axios';
-import {AiOutlineSearch} from "react-icons/ai"
+import { searchMove } from "../../api/api"
+import axios from '../../api/axios';
+import { AiOutlineSearch } from "react-icons/ai"
 export default function ComponerntSearch() {
     const [name_move, setName_move] = useState("")
     const [movies, setMovies] = useState([])
@@ -34,13 +34,19 @@ export default function ComponerntSearch() {
         <div className="pirant">
             <div className="search_style">
                 <div>
-                    <TextField id="filled-basic" label="Search" variant="filled" value={name_move} onChange={handlChange}
+                    <TextField
+                        id="text"
+                        label="Search"
+                        variant="outlined"
+                        value={name_move}
+                        onChange={handlChange}
                         required
                         name="text"
+                        className="textSearch"
                     />
                 </div>
                 <div>
-                    <Button disableElevation variant="contained" onClick={handlClike} ><AiOutlineSearch/>Search</Button>
+                    <Button disableElevation variant="contained" onClick={handlClike} ><AiOutlineSearch />Search</Button>
                 </div>
             </div>
             <hr></hr>
@@ -49,12 +55,15 @@ export default function ComponerntSearch() {
                     <FakeSearch lodingFake={true} />
                     : null
             }
-            <div>
-            {
-                loding ? movies.map((item, i) => <MovieItim name={item.title} id={item.id} urlImg={item.poster_path} key={i} />) : null
-            }
+            <div >
+                <div>
+                    {
+                        loding ? movies.map((item, i) => <MovieItim name={item.title} id={item.id} urlImg={item.poster_path} key={i} />) : null
+                    }
+                </div>
+
             </div>
-            
+
         </div>
     )
 }

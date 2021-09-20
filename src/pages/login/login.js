@@ -11,9 +11,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { FcGoogle } from "react-icons/fc";
 
 
-import { auth } from '../firebase/firebase'
+import { auth ,authGoogle} from '../../firebase/firebase'
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './authcss.css'
@@ -36,6 +37,10 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  signinGoogle:{
+    marginTop: "30px",
+    marginBottom:"30px"
+  }
 }));
 
 const initialState = { email: '', password: '' };
@@ -64,7 +69,12 @@ export default function SignIn() {
       setError(err.message);
     }
   };
-
+  const hundlSigninGoogle =()=>{
+    auth.signInWithPopup(authGoogle).then((res)=>{
+      history.push('/');
+    })
+  }
+  
 
   return (
     <Container component="main" maxWidth="xs">
@@ -131,6 +141,10 @@ export default function SignIn() {
             </Grid>
           </Grid>
         </form>
+        <Button variant="contained" className={classes.signinGoogle} color="primary" onClick={hundlSigninGoogle} disableElevation>
+          <FcGoogle/> Sign In With Google
+        </Button>
+
       </div>
 
     </Container>
