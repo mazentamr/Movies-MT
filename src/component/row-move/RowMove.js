@@ -90,23 +90,21 @@ export default function RowMove({ tital, url_movie }) {
     const [movies, setMovies] = useState([])
     const [infoM, setinfoMo] = useState({})
     const url_img = "https://image.tmdb.org/t/p/original"
+
+    
     useEffect(() => {
         async function fetchData() {
             try {
                 const response = await axios.get(url_movie)
                 setMovies(response.data.results);
                 response.data.results.then(setLoding(false))
-
                 return response
             } catch (err) {
                 console.log(console.error(err))
             }
-
         }
         fetchData()
     }, [])
-
-
 
     const handleClickOpen = (id) => {
         setOpen(true);
