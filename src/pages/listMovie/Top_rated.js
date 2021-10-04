@@ -1,6 +1,6 @@
 import Typography from '@material-ui/core/Typography';
 import { useEffect, useState } from 'react';
-import axios from '../api/axios';
+import axios from '../../api/axios';
 import Grid from '@material-ui/core/Grid';
 import './Listmovie.css'
 import { Button } from '@material-ui/core';

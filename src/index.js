@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
+import { Routing } from './services/routing';
 import reportWebVitals from './reportWebVitals';
 import  store  from './app/store';
 import { Provider } from 'react-redux';
@@ -10,7 +11,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Routing/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
